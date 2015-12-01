@@ -13,7 +13,7 @@
 (require rackunit)
 
 ;; State
-(struct directions (list floor))
+(struct directions (list floor) #:transparent)
 
 ;; Constants
 (define UP #\()
@@ -26,6 +26,14 @@
 ; Consumes a character and returns true if it means down, false otherwise
 (define (down? char)
   (equal? char DOWN))
+
+;; Main
+(define (start)
+  ; Read in a line to get directions, split into list, pass into struct
+  (define state (directions (string->list (read-line)) 0))
+  (print state))
+
+(start)
 
 ;; Tests
 ; up?
