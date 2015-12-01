@@ -39,7 +39,7 @@
 (define (start)
   ; Read in a line to get directions, split into list, pass into struct
   (define state (directions (string->list (read-line)) 0))
-  (print state))
+  (find-floor state))
 
 (start)
 
