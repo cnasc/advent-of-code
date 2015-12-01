@@ -26,6 +26,14 @@
 ; Consumes a character and returns true if it means down, false otherwise
 (define (down? char)
   (equal? char DOWN))
+; Consumes the state of the world and returns which floor Santa should go to
+(define (find-floor w)
+  (define list (directions-list w))
+  (define floor (directions-floor w))
+  (cond [(empty? list) floor]
+        [(up? (car list)) (find-floor (directions (cdr list) (add1 floor)))]
+        [(down? (car list)) (find-floor (directions (cdr list) (sub1 floor)))]
+        [else (find-floor (directions (cdr list) floor))]))
 
 ;; Main
 (define (start)
@@ -44,4 +52,9 @@
 (check-eq? (down? #\)) #t "Close paren means down")
 (check-eq? (down? #\() #f "Open parenthesis means up")
 (check-eq? (down? #\5) #f "Non paren values should be false")
+; find-floor
+(check-eq? (find-floor (directions (list UP UP) 0)) 2 "Two ups should yield floor 2")
+(check-eq? (find-floor (directions (list DOWN DOWN) 0)) -2 "Two downs should yield floor -2")
+(check-eq? (find-floor (directions (list) 0)) 0 "An empty list should yield floor 0")
+(check-eq? (find-floor (directions (list #\p #\k #\!) 0)) 0 "A list of invalid moves should yield floor 0")
 
