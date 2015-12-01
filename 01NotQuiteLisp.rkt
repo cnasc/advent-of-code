@@ -7,6 +7,8 @@
  |
  | An opening parenthesis, (, means he should go up one floor, and a closing
  | parenthesis, ), means he should go down one floor.
+ |
+ | TO USE: Open in DrRacket and hit run, enter string of directions into prompt.
 |#
 
 #lang racket
