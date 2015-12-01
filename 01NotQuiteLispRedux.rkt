@@ -25,12 +25,21 @@
 (define (down? char)
   (equal? char DOWN))
 ; Consumes the state of the world and returns the first position where Santa enters the basement
+(define (basement-position w)
+  (define list (directions-list w))
+  (define floor (directions-floor w))
+  (define position (directions-position w))
+  (cond [(and (empty? list) (not (negative? floor))) 0] ; never found a basement position
+        [(negative? floor) position] ; return position of first time floor goes negative
+        [(up? (car list)) (basement-position (directions (cdr list) (add1 floor) (add1 position)))]
+        [(down? (car list)) (basement-position (directions (cdr list) (sub1 floor) (add1 position)))]
+        [else (basement-position (cdr list) floor position)]))
 
 ;; Main
 (define (start)
   ; Read in a line to get directions, split into list, pass into struct
-  (define state (directions (string->list (read-line)) 0 1))
-  (print state))
+  (define state (directions (string->list (read-line)) 0 0))
+  (basement-position state))
 
 (start)
 
@@ -43,4 +52,8 @@
 (check-eq? (down? #\)) #t "Close paren means down")
 (check-eq? (down? #\() #f "Open parenthesis means up")
 (check-eq? (down? #\5) #f "Non paren values should be false")
-
+; basement-position
+(check-eq? (basement-position (directions (list UP UP DOWN DOWN DOWN) 0 0)) 5)
+(check-eq? (basement-position (directions (list DOWN DOWN DOWN) 0 0)) 1)
+(check-eq? (basement-position (directions (list UP UP DOWN DOWN) 0 0)) 0)
+(check-eq? (basement-position (directions (list UP UP) 0 0)) 0)
