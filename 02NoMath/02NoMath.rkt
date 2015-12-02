@@ -1,4 +1,8 @@
 #lang racket
+#|
+  To Use: Save your puzzle input as `input.txt` in the `02NoMath` folder, open
+  the program in DrRacket, hit run.
+|#
 
 ;; State, a list of lines and a running total
 (struct state(lines total))
