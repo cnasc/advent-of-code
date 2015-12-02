@@ -29,6 +29,8 @@
   (* (first new-list) (second new-list)))
 
 ; Consumes a line and returns the length of ribbon it requires
+(define (ribbon-amt line)
+  (+ (around line) (bow line)))
 
 ; Consumes a line and returns the square feet of wrapping paper it requires
 (define (paper-amt line)
