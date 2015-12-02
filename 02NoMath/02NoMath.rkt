@@ -8,11 +8,20 @@
 (struct state(lines total))
 
 ;; Definitions
+; Consumes the state of the world and returns true if no calculations are left
+(define (finished? w)
+  (empty? (state-lines w)))
+
+; Consumes a line and returns the square feet of wrapping paper it requires
+(define (calculate line)
+  (print line))
+
+; Consumes the world and returns the total square feet of wrapping paper required
 (define (total-sq-feet w)
   (cond [(finished? w) (state-total w)]
-        [else (let ([line (car (state-lines w))]
-                    [value (calculate line)]
-                    [new-world (state (cdr (state-lines w)) (+ (state-total w) value))])
+        [else (let* ([line (car (state-lines w))]
+                     [value (calculate line)]
+                     [new-world (state (cdr (state-lines w)) (+ (state-total w) value))])
                 (total-sq-feet new-world))]
         ))
 
