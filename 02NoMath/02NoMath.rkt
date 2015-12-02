@@ -12,9 +12,21 @@
 (define (finished? w)
   (empty? (state-lines w)))
 
+; Consumes a list representing box dimensions and returns its surface area
+(define (surface-area lwh)
+  (define l (first lwh))
+  (define w (second lwh))
+  (define h (third lwh))
+  (+ (* 2 l w) (* 2 w h) (* 2 h l)))
+
+; Consumes a list representing box dimensions and returns area of smallest side
+(define (smallest-side lwh)
+  (define new-list (sort lwh <))
+  (* (first new-list) (second new-list)))
+
 ; Consumes a line and returns the square feet of wrapping paper it requires
 (define (calculate line)
-  (define lwh (sort (map string->number (string-split line "x")) <))
+  (define lwh (map string->number (string-split line "x")))
   (+ (surface-area lwh) (smallest-side lwh)))
 
 ; Consumes the world and returns the total square feet of wrapping paper required
