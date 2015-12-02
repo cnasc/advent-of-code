@@ -29,13 +29,13 @@
   (define new-list (sort lwh <))
   (* (first new-list) (second new-list)))
 
-; Consumes a line and returns the length of ribbon it requires
-(define (ribbon-amt line)
-  (+ (around line) (bow line)))
+; Consumes a list representing box dimensions and returns the length of ribbon it requires
+(define (ribbon-amt lwh)
+  (+ (smallest-perimeter lwh) (cubic-volume lwh)))
 
-; Consumes a line and returns the square feet of wrapping paper it requires
-(define (paper-amt line)
-  (+ (surface-area line) (smallest-side line)))
+; Consumes a list representing box dimensions and returns the square feet of wrapping paper it requires
+(define (paper-amt lwh)
+  (+ (surface-area lwh) (smallest-side lwh)))
 
 ; Consumes the world and returns the square feet of paper required and the length of ribbon required
 (define (total-materials w)
