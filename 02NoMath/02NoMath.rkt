@@ -63,9 +63,10 @@
   (define lines (file->lines "input.txt"))
   (define world (state lines 0 0))
   (define answers (total-materials world))
-  (print answers))
+  (writeln (string-append "Paper (sq ft): " (number->string (first answers))))
+  (writeln (string-append "Ribbon (ft)  : " (number->string (second answers)))))
 
-;(start)
+(start)
 
 ;; Tests
 #;(test-case
