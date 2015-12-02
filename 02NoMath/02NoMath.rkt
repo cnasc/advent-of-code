@@ -53,7 +53,8 @@
 (define (start)
   (define lines (file->lines "input.txt"))
   (define world (state lines 0 0))
-  (total-materials world))
+  (define answers (total-materials world))
+  (print answers))
 
 ;(start)
 
