@@ -1,4 +1,17 @@
 #lang racket
-;; OK, so we want to use file->lines for this one, then parse the strings
-;; Have to figure out the path though.
-;(print (file->lines "Documents/advent-of-code/02NoMath/test.txt"))
+
+;; State, a list of lines and a running total
+(struct state(lines total))
+
+;; Definitions
+(define (total-sq-feet w)
+  (define line (car (state-lines w)))
+  (print line))
+
+;; Main
+(define (start)
+  (define lines (file->lines "input.txt"))
+  (define world (state lines 0))
+  (total-sq-feet world))
+
+(start)
