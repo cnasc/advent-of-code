@@ -14,7 +14,8 @@
 
 ; Consumes a line and returns the square feet of wrapping paper it requires
 (define (calculate line)
-  (print line))
+  (define lwh (sort (map string->number (string-split line "x")) <))
+  (+ (surface-area lwh) (smallest-side lwh)))
 
 ; Consumes the world and returns the total square feet of wrapping paper required
 (define (total-sq-feet w)
