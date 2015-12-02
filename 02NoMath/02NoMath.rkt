@@ -6,7 +6,7 @@
 |#
 
 ;; State, a list of lines and a running total
-(struct state(lines total))
+(struct state(lines sq-paper ribbon))
 
 ;; Constants
 (define SEP "x")
@@ -33,7 +33,7 @@
   (define lwh (map string->number (string-split line SEP)))
   (+ (surface-area lwh) (smallest-side lwh)))
 
-; Consumes the world and returns the total square feet of wrapping paper required
+; Consumes the world and returns the square feet of paper required and the length of ribbon required
 (define (total-sq-feet w)
   (cond [(finished? w) (state-total w)]
         [else (let* ([line (car (state-lines w))]
@@ -44,7 +44,7 @@
 ;; Main
 (define (start)
   (define lines (file->lines "input.txt"))
-  (define world (state lines 0))
+  (define world (state lines 0 0))
   (total-sq-feet world))
 
 ;(start)
