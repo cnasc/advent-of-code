@@ -35,11 +35,14 @@
 
 ; Consumes the world and returns the square feet of paper required and the length of ribbon required
 (define (total-materials w)
-  (cond [(finished? w) (state-total w)]
+  (cond [(finished? w) (list (state-paper w) (state-ribbon w))]
         [else (let* ([line (car (state-lines w))]
-                     [value (paper-amt line)]
-                     [new-world (state (cdr (state-lines w)) (+ (state-total w) value))])
-                (total-sq-feet new-world))]))
+                     [paper-val (paper-amt line)]
+                     [ribbon-val (ribbon-amt line)]
+                     [new-world (state (cdr (state-lines w))
+                                       (+ (state-paper w) paper-val)
+                                       (+ (state-ribbon w) ribbon-val))])
+                (total-materials new-world))]))
 
 ;; Main
 (define (start)
