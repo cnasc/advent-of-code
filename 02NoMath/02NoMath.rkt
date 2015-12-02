@@ -68,7 +68,7 @@
 ;(start)
 
 ;; Tests
-(test-case
+#;(test-case
  "Testing 02NoMath.rkt"
  (check-equal? (surface-area (list 2 3 4)) 52 "Surface area")
  
@@ -76,4 +76,6 @@
  (check-equal? (smallest-side (list 4 2 8)) 8 "Smallest side, mixed order")
 
  (check-equal? (smallest-perimeter (list 2 3 4)) 10 "Smallest perimeter")
- (check-equal? (smallest-perimeter (list 6 8 4)) 20 "Smallest perimeter, mixed order"))
+ (check-equal? (smallest-perimeter (list 6 8 4)) 20 "Smallest perimeter, mixed order")
+
+ (check-equal? (cubic-volume (list 2 2 2)) 8 "Cubic volume"))
