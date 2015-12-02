@@ -9,6 +9,7 @@
 (struct state(lines paper ribbon))
 
 ;; Constants
+; The separator for values in input file
 (define SEP "x")
 
 ;; Definitions
