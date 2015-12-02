@@ -22,8 +22,7 @@
         [else (let* ([line (car (state-lines w))]
                      [value (calculate line)]
                      [new-world (state (cdr (state-lines w)) (+ (state-total w) value))])
-                (total-sq-feet new-world))]
-        ))
+                (total-sq-feet new-world))]))
 
 ;; Main
 (define (start)
@@ -31,4 +30,4 @@
   (define world (state lines 0))
   (total-sq-feet world))
 
-(start)
+;(start)
