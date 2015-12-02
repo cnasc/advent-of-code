@@ -29,6 +29,11 @@
   (define new-list (sort lwh <))
   (* (first new-list) (second new-list)))
 
+; Consumes list representing box dimensions and returns the smallest perimeter
+(define (smallest-perimeter lwh)
+  (define new-list (sort lwh <))
+  (+ (* 2 (first new-list)) (* 2 (second new-list))))
+
 ; Consumes a list representing box dimensions and returns the length of ribbon it requires
 (define (ribbon-amt lwh)
   (+ (smallest-perimeter lwh) (cubic-volume lwh)))
