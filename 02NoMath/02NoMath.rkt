@@ -9,8 +9,12 @@
 
 ;; Definitions
 (define (total-sq-feet w)
-  (define line (car (state-lines w)))
-  (print line))
+  (cond [(finished? w) (state-total w)]
+        [else (let ([line (car (state-lines w))]
+                    [value (calculate line)]
+                    [new-world (state (cdr (state-lines w)) (+ (state-total w) value))])
+                (total-sq-feet new-world))]
+        ))
 
 ;; Main
 (define (start)
