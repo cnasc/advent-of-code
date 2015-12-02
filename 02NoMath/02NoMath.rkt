@@ -28,17 +28,19 @@
   (define new-list (sort lwh <))
   (* (first new-list) (second new-list)))
 
+; Consumes a line and returns the length of ribbon it requires
+
 ; Consumes a line and returns the square feet of wrapping paper it requires
 (define (paper-amt line)
-  (define lwh (map string->number (string-split line SEP)))
-  (+ (surface-area lwh) (smallest-side lwh)))
+  (+ (surface-area line) (smallest-side line)))
 
 ; Consumes the world and returns the square feet of paper required and the length of ribbon required
 (define (total-materials w)
   (cond [(finished? w) (list (state-paper w) (state-ribbon w))]
         [else (let* ([line (car (state-lines w))]
-                     [paper-val (paper-amt line)]
-                     [ribbon-val (ribbon-amt line)]
+                     [lwh (map string->number (string-split line SEP))]
+                     [paper-val (paper-amt lwh)]
+                     [ribbon-val (ribbon-amt lwh)]
                      [new-world (state (cdr (state-lines w))
                                        (+ (state-paper w) paper-val)
                                        (+ (state-ribbon w) ribbon-val))])
