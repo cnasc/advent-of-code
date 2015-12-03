@@ -63,6 +63,19 @@
         [(eq? dir LEFT) (posn (sub1 x) y)]
         [(eq? dir RIGHT) (posn (add1 x) y)]))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ROBOT RELATED FUNCTIONS ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Consumes Robo-Santa's current position and direction and produces his position after moving
+; Robo-Santa moves in the opposite direction of Santa, so on UP input he moves DOWN
+(define (move-robo dir cur)
+  (define x (posn-x cur))
+  (define y (posn-y cur))
+  (cond [(eq? dir UP) (posn x (sub1 y))]
+        [(eq? dir DOWN) (posn x (add1 y))]
+        [(eq? dir LEFT) (posn (add1 x) y)]
+        [(eq? dir RIGHT) (posn (sub1 x) y)]))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
@@ -79,8 +92,8 @@
              (check-true  (posn=? (posn 3 5) (posn 3 5)))
              (check-false (posn=? (posn 3 5) (posn 5 3))))
   (test-case "done?"
-             (check-true (done? (santa (list) (list) (posn 0 0) (posn 0 0))))
-             (check-false (done? (santa (list #\^) (list) (posn 0 0) (posn 0 0)))))
+             (check-true (done? (santa (list) (list) (posn 0 0))))
+             (check-false (done? (santa (list #\^) (list) (posn 0 0)))))
   (test-case "move"
              (check posn=? (move UP (posn 0 0)) (posn 0 1))
              (check posn=? (move DOWN (posn 0 0)) (posn 0 -1))
