@@ -21,6 +21,9 @@
 (define LEFT #\>)
 (define RIGHT #\<)
 
+; Increment for move counter. 1 allows both actors to move, 2 is just Santa
+(define INCR 1)
+
 ;;;;;;;;;;;;;;;;;;;;;
 ;; WORLD FUNCTIONS ;;
 ;;;;;;;;;;;;;;;;;;;;;
