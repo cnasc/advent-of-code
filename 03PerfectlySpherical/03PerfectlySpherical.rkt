@@ -43,7 +43,7 @@
   (define santa (grid-santa g))
   (grid (rest (grid-directions g))
         (+ (grid-counter g) INCR)
-        (update-coords dir santa)
+        (update-actor dir santa)
         (grid-robot g)))
 
 ; Moves robot according to current direction then returns updated grid
@@ -53,7 +53,10 @@
   (grid (rest (grid-directions g))
         (+ (grid-counter g) INCR)
         (grid-santa g)
-        (update-coords dir robot)))
+        (update-actor dir robot)))
+
+; Consumes a direction and an actor and outputs an updated actor
+(define (update-actor dir p))
 
 ;;;;;;;;;;
 ;; MAIN ;;
