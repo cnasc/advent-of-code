@@ -22,6 +22,10 @@
         [(even? (grid-counter g)) (make-stops (move-santa g))]
         [else (make-stops (move-robot g))]))
 
+; Returns true if no directions remain
+(define (done? g)
+  (empty? (grid-directions g)))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
