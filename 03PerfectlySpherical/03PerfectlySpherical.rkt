@@ -43,7 +43,7 @@
   (define santa (grid-santa g))
   (grid (rest (grid-directions g))
         (+ (grid-counter g) INCR)
-        (move dir santa)
+        (update-coords dir santa)
         (grid-robot g)))
 
 ; Moves robot according to current direction then returns updated grid
@@ -53,7 +53,7 @@
   (grid (rest (grid-directions g))
         (+ (grid-counter g) INCR)
         (grid-santa g)
-        (move dir robot)))
+        (update-coords dir robot)))
 
 ;;;;;;;;;;
 ;; MAIN ;;
