@@ -22,6 +22,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; POSN RELATED FUNCTIONS ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks equality of two given positions
 (define (posn=? a b)
   (and (= (posn-x a) (posn-x b))
        (= (posn-y a) (posn-y b))))
