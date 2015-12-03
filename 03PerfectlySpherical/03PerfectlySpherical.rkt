@@ -40,6 +40,15 @@
       (santa remn visited nxt-posn)
       (santa remn (cons nxt-posn visited) nxt-posn)))
 
+; Consumes Santa's current position and direction and produces his position after moving
+(define (move direction posn)
+  (define x (posn-x posn))
+  (define y (posn-y posn))
+  (cond [(eq? direction UP) (posn x (add1 y))]
+        [(eq? direction DOWN) (posn x (sub1 y))]
+        [(eq? direction LEFT) (posn (sub1 x) y)]
+        [(eq? direction RIGHT) (posn (add1 x) y)]))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
