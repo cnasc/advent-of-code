@@ -39,6 +39,18 @@
                                 santa
                                 (move robot (first directions))))]))
 
+; Consumes a list of positions and a direction and produces a list with the
+; new position at the head
+(define (move lst dir)
+  (define head (first list))
+  (define x (posn-x head))
+  (define y (posn-y head))
+  (cond [(eq? dir UP) (cons (posn x (add1 y)) lst)]
+        [(eq? dir DOWN) (cons (posn x (sub1 y)) lst)]
+        [(eq? dir LEFT) (cons (posn (sub1 x) y) lst)]
+        [(eq? dir RIGHT) (cons (posn (add1 x) y) lst)]
+        [else lst]))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
