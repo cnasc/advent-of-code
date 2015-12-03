@@ -4,7 +4,7 @@
 ;;;;;;;;;;
 ; Represents Santa's list of directions, list of visited positions,
 ; and current position.
-(struct santa (directions visited-posns santa-posn))
+(struct santa (directions visited-posns cur-posn))
 
 ; Represents (x, y) coordinates
 (struct posn (x y))
@@ -23,7 +23,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Consumes Santa and produces Santa after following all directions
 (define (visit-houses s)
-  )
+  (cond [(done? s) s]
+        [else (visit-houses (deliver s))]))
 
 ;;;;;;;;;;
 ;; MAIN ;;
