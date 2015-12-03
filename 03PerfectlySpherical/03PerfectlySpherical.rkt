@@ -30,6 +30,16 @@
 (define (done? s)
   (empty? (santa-directions s)))
 
+; Consumes Santa and produces Santa after following a single direction
+(define (deliver s)
+  (define cur-posn (santa-cur-posn s))
+  (define nxt-posn (move (first (santa-directions s)) cur-posn))
+  (define remn (rest (santa-directions s)))
+  (define visited (santa-visited-posns s))
+  (if (member nxt-posn visited)
+      (santa remn visited nxt-posn)
+      (santa remn (cons nxt-posn visited) nxt-posn)))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
