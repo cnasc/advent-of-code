@@ -37,6 +37,15 @@
 (define (done? g)
   (empty? (grid-directions g)))
 
+; Moves santa according to current direction then returns updated grid
+(define (move-santa g)
+  (define dir (first (grid-directions g)))
+  (define santa (grid-santa g))
+  (grid (rest (grid-directions g))
+        (+ counter INCR)
+        (move dir santa)
+        (grid-robot g)))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
