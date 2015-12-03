@@ -26,6 +26,10 @@
   (cond [(done? s) s]
         [else (visit-houses (deliver s))]))
 
+; Checks if Santa has completed his run
+(define (done? s)
+  (empty? (santa-directions s)))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
