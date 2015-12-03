@@ -74,4 +74,9 @@
              (check-false (posn=? (posn 3 5) (posn 5 3))))
   (test-case "done?"
              (check-true (done? (santa (list) (list) (posn 0 0))))
-             (check-false (done? (santa (list #\^) (list) (posn 0 0))))))
+             (check-false (done? (santa (list #\^) (list) (posn 0 0)))))
+  (test-case "move"
+             (check posn=? (move UP (posn 0 0)) (posn 0 1))
+             (check posn=? (move DOWN (posn 0 0)) (posn 0 -1))
+             (check posn=? (move LEFT (posn 0 0)) (posn -1 0))
+             (check posn=? (move RIGHT (posn 0 0)) (posn 1 0))))
