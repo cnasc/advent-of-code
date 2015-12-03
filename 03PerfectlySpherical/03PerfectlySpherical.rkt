@@ -36,7 +36,7 @@
   (define nxt-posn (move (first (santa-directions s)) cur-posn))
   (define remn (rest (santa-directions s)))
   (define visited (santa-visited-posns s))
-  (if (member nxt-posn visited)
+  (if (member nxt-posn visited posn=?)
       (santa remn visited nxt-posn)
       (santa remn (cons nxt-posn visited) nxt-posn)))
 
