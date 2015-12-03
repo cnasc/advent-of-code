@@ -53,6 +53,19 @@
         [(eq? direction LEFT) (posn (sub1 x) y)]
         [(eq? direction RIGHT) (posn (add1 x) y)]))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ROBOT RELATED FUNCTIONS ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Consumes Robo-Santa's current position and direction and produces his position after moving
+; Robo-Santa moves in the opposite direction of Santa, so on UP input he moves DOWN
+(define (move-robo dir cur)
+  (define x (posn-x cur))
+  (define y (posn-y cur))
+  (cond [(eq? dir UP) (posn x (sub1 y))]
+        [(eq? dir DOWN) (posn x (add1 y))]
+        [(eq? dir LEFT) (posn (add1 x) y)]
+        [(eq? dir RIGHT) (posn (sub1 x) y)]))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
