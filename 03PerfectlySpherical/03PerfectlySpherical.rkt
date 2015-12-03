@@ -45,13 +45,13 @@
   (empty? (santa-directions s)))
 
 ; Consumes Santa's current position and direction and produces his position after moving
-(define (move direction cur)
+(define (move dir cur)
   (define x (posn-x cur))
   (define y (posn-y cur))
-  (cond [(eq? direction UP) (posn x (add1 y))]
-        [(eq? direction DOWN) (posn x (sub1 y))]
-        [(eq? direction LEFT) (posn (sub1 x) y)]
-        [(eq? direction RIGHT) (posn (add1 x) y)]))
+  (cond [(eq? dir UP) (posn x (add1 y))]
+        [(eq? dir DOWN) (posn x (sub1 y))]
+        [(eq? dir LEFT) (posn (sub1 x) y)]
+        [(eq? dir RIGHT) (posn (add1 x) y)]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ROBOT RELATED FUNCTIONS ;;
