@@ -8,6 +8,14 @@
 ; Represents 2D coordinates
 (struct posn (x y) #:transparent)
 
+;;;;;;;;;;;;;;;
+;; CONSTANTS ;;
+;;;;;;;;;;;;;;;
+(define UP #\^)
+(define DOWN #\v)
+(define LEFT #\<)
+(define RIGHT #\>)
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
