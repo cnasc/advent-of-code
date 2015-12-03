@@ -32,17 +32,21 @@
 ; Consumes Santa and produces Santa after following all directions
 (define (visit-houses s)
   (cond [(done? s) s]
-        [else (let* ([dir (first (santa-directions s))]
-                     [remn (rest (santa-directions s))]
-                     [nxt-posn (move dir (santa-cur-posn s))]
-                     [nxt-robo (move-robo dir (santa-robo-posn s))]
-                     [visited (santa-visited-posns s)]
-                     [updated (check-posns visited nxt-posn nxt-robo)])
-                (visit-houses (santa remn updated nxt-posn nxt-robo)))]))
+        [else (visit-houses (deliver s))]))
 
 ; Checks if Santa has completed his run
 (define (done? s)
   (empty? (santa-directions s)))
+
+; Consumes Santa and produces Santa after following a single direction
+(define (deliver s)
+  (define cur-posn (santa-cur-posn s))
+  (define nxt-posn (move (first (santa-directions s)) cur-posn))
+  (define remn (rest (santa-directions s)))
+  (define visited (santa-visited-posns s))
+  (if (member nxt-posn visited posn=?)
+      (santa remn visited nxt-posn)
+      (santa remn (cons nxt-posn visited) nxt-posn)))
 
 ; Consumes Santa's current position and direction and produces his position after moving
 (define (move direction cur)
@@ -58,7 +62,7 @@
 ;;;;;;;;;;
 (define (start)
   (define directions (string->list (file->string "input.txt")))
-  (define s (santa directions (list (posn 0 0)) (posn 0 0) (posn 0 0)))
+  (define s (santa directions (list (posn 0 0)) (posn 0 0)))
   (length (santa-visited-posns (visit-houses s))))
 
 ;;;;;;;;;;;
