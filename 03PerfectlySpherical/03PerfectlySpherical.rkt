@@ -57,6 +57,11 @@
   (define robot (grid-robot-posns g))
   (length (remove-duplicates (append santa robot) posn=?)))
 
+; Returns true if two posns are equal
+(define (posn=? a b)
+  (and (= (posn-x a) (posn-x b))
+       (= (posn-y a) (posn-y b))))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
