@@ -61,5 +61,5 @@
 ;;;;;;;;;;
 (define (start)
   (define directions (string->list (file->string "input.txt")))
-  (define s (santa directions (list) (posn 0 0)))
-  (visit-houses s))
+  (define s (santa directions (list (posn 0 0)) (posn 0 0)))
+  (length (santa-visited-posns (visit-houses s))))
