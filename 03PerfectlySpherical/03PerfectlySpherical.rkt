@@ -4,10 +4,10 @@
 ;;;;;;;;;;
 ; Represents Santa's list of directions, list of visited positions,
 ; and current position.
-(struct santa (directions visited-posns cur-posn))
+(struct santa (directions visited-posns cur-posn) #:transparent)
 
 ; Represents (x, y) coordinates
-(struct posn (x y))
+(struct posn (x y) #:transparent)
 
 ;;;;;;;;;;;;;;;
 ;; CONSTANTS ;;
