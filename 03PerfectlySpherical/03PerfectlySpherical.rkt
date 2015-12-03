@@ -42,9 +42,18 @@
   (define dir (first (grid-directions g)))
   (define santa (grid-santa g))
   (grid (rest (grid-directions g))
-        (+ counter INCR)
+        (+ (grid-counter g) INCR)
         (move dir santa)
         (grid-robot g)))
+
+; Moves robot according to current direction then returns updated grid
+(define (move-robot g)
+  (define dir (first (grid-directions g)))
+  (define robot (grid-robot g))
+  (grid (rest (grid-directions g))
+        (+ (grid-counter g) INCR)
+        (grid-santa g)
+        (move dir robot)))
 
 ;;;;;;;;;;
 ;; MAIN ;;
