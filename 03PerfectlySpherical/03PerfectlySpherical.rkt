@@ -9,8 +9,12 @@
 ; Represents (x, y) coordinates
 (struct posn (x y))
 
+;;;;;;;;;;;;;;;
+;; CONSTANTS ;;
+;;;;;;;;;;;;;;;
+
 ;;;;;;;;;;
-;; Main ;;
+;; MAIN ;;
 ;;;;;;;;;;
 (define (start)
   (define directions (string->list (file->string "input.txt")))
