@@ -4,8 +4,8 @@
 ;; DATA ;;
 ;;;;;;;;;;
 ; Represents Santa's list of directions, list of visited positions,
-; current position, and position of Robo-Santa.
-(struct santa (directions visited-posns cur-posn robo-posn) #:transparent)
+; and current position.
+(struct santa (directions visited-posns cur-posn) #:transparent)
 
 ; Represents (x, y) coordinates
 (struct posn (x y) #:transparent)
