@@ -27,15 +27,6 @@
   (and (= (posn-x a) (posn-x b))
        (= (posn-y a) (posn-y b))))
 
-; Checks a pair of positions for presence in visited list, adds uniques and returns new list
-(define (check-posns visited santa robot)
-  (define add-santa (not (member santa visited)))
-  (define add-robot (not (member robot visited)))
-  (cond [(and add-santa add-robot) (cons santa (cons robot visited))]
-        [add-santa (cons santa visited)]
-        [add-robot (cons robot visited)]
-        [else visited]))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SANTA RELATED FUNCTIONS ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
