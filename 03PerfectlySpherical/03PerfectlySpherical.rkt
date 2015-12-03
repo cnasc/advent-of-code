@@ -1,4 +1,5 @@
 #lang racket
+(require rackunit rackunit/text-ui)
 ;;;;;;;;;;
 ;; DATA ;;
 ;;;;;;;;;;
@@ -63,3 +64,14 @@
   (define directions (string->list (file->string "input.txt")))
   (define s (santa directions (list (posn 0 0)) (posn 0 0)))
   (length (santa-visited-posns (visit-houses s))))
+
+;;;;;;;;;;;
+;; Tests ;;
+;;;;;;;;;;;
+(define-test-suite all
+  (test-case "posn functions"
+             (check-true  (posn=? (posn 3 5) (posn 3 5)))
+             (check-false (posn=? (posn 3 5) (posn 5 3))))
+  (test-case "done?"
+             (check-true (done? (santa (list) (list) (posn 0 0))))
+             (check-false (done? (santa (list #\^) (list) (posn 0 0))))))
