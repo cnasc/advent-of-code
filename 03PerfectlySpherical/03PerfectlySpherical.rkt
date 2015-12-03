@@ -21,11 +21,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SANTA RELATED FUNCTIONS ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Consumes Santa and produces Santa after following all directions
+(define (visit-houses s)
+  )
 
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
 (define (start)
   (define directions (string->list (file->string "input.txt")))
-  (define w (santa directions (list) (posn 0 0)))
-  (visit-houses w))
+  (define s (santa directions (list) (posn 0 0)))
+  (visit-houses s))
