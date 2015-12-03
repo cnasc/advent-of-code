@@ -51,6 +51,12 @@
         [(eq? dir RIGHT) (cons (posn (add1 x) y) lst)]
         [else lst]))
 
+; Consumes the final state of the world and returns the results
+(define (calculate-results g)
+  (define santa (grid-santa-posns g))
+  (define robot (grid-robot-posns g))
+  (length (remove-duplicates (append santa robot) posn=?)))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
@@ -59,4 +65,4 @@
   (define santa (list (posn 0 0)))
   (define robot (list (posn 0 0)))
   (define g (grid directions 0 santa robot))
-  (length (grid-directions (make-stops g))))
+  (calculate-results (make-stops g)))
