@@ -12,6 +12,15 @@
 ;;;;;;;;;;;;;;;
 ;; CONSTANTS ;;
 ;;;;;;;;;;;;;;;
+; Directions Santa can move in
+(define UP #\^)
+(define DOWN #\v)
+(define LEFT #\<)
+(define RIGHT #\>)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SANTA RELATED FUNCTIONS ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;
 ;; MAIN ;;
