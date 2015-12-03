@@ -16,6 +16,29 @@
 (define LEFT #\<)
 (define RIGHT #\>)
 
+; Amount by which counter increases during execution.
+; `1` allows both actors, `2` just Santa.
+(define INCR 1)
+
+;;;;;;;;;;;;;;;
+;; FUNCTIONS ;;
+;;;;;;;;;;;;;;;
+; Consumes the world and produces the state of the world after all stops are made
+(define (make-stops g)
+  (define directions (grid-directions g))
+  (define counter (grid-counter g))
+  (define santa (grid-santa-posns g))
+  (define robot (grid-robot-posns g))
+  (cond [(empty? directions) g]
+        [(even? counter) (make-stops (grid (rest directions)
+                                           (+ counter INCR)
+                                           (move santa (first directions))
+                                           robot))]
+        [else (make-stops (grid (rest directions)
+                                (+ counter INCR)
+                                santa
+                                (move robot (first directions))))]))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
