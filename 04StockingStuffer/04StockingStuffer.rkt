@@ -1,5 +1,5 @@
 #lang racket
-(require file/md5 racket/format rackunit rackunit/text-ui)
+(require file/md5 racket/format rackunit rackunit/text-ui profile)
 #|
 Santa needs help mining some AdventCoins (very similar to bitcoins) to use
 as gifts for all the economically forward-thinking little girls and boys.
@@ -25,12 +25,21 @@ Your puzzle input is yzbqklnj.
 
 ; Returns true if hash starts with five zeroes
 (define (answer? hash)
-  (define first5 (substring hash 0 5))
-  (string=? first5 "00000"))
+  (define first-group (substring hash 0 NUM-TO-FIND))
+  (string=? first-group MATCH))
+
+; Repeats a string a number of time
+(define (string-repeat n str)
+  (string-append* (make-list n str)))
 
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
+; Number of leading digits to match
+(define NUM-TO-FIND 6)
+; Pattern of leading digits to match
+(define MATCH (string-repeat NUM-TO-FIND "0"))
+
 (define (start key)
   (get-answer key 1))
 
