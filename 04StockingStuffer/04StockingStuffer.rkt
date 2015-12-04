@@ -23,6 +23,11 @@ Your puzzle input is yzbqklnj.
       num
       (get-answer key (add1 num))))
 
+; Returns true if hash starts with five zeroes
+(define (answer? hash)
+  (define first5 (substring hash 0 4))
+  (string=? first5 "00000"))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
