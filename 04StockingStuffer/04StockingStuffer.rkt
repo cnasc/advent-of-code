@@ -13,8 +13,18 @@ AdventCoins, you must find Santa the lowest positive number
 Your puzzle input is yzbqklnj.
 |#
 
+;;;;;;;;;;;;;;;
+;; FUNCTIONS ;;
+;;;;;;;;;;;;;;;
+; Consumes the key and current number to try and produces the answer
+(define (get-answer key num)
+  (define hash (get-hash (string-append key (number->string num))))
+  (if (answer? hash)
+      num
+      (get-answer key (add1 num))))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
 (define (start key)
-  (get-hash key 1))
+  (get-answer key 1))
