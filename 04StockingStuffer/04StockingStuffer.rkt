@@ -1,5 +1,5 @@
 #lang racket
-(require file/md5 racket/format)
+(require file/md5 racket/format rackunit rackunit/text-ui)
 #|
 Santa needs help mining some AdventCoins (very similar to bitcoins) to use
 as gifts for all the economically forward-thinking little girls and boys.
@@ -33,3 +33,14 @@ Your puzzle input is yzbqklnj.
 ;;;;;;;;;;
 (define (start key)
   (get-answer key 1))
+
+;;;;;;;;;;;
+;; TESTS ;;
+;;;;;;;;;;;
+(define-test-suite all
+  (test-case "answer?"
+             (check-true (answer? "00000"))
+             (check-false (answer? "00001")))
+  (test-case "get-answer"
+             (check-eq? (get-answer "abcdef" 609043) 609043)
+             (check-eq? (get-answer "pqrstuv" 1048970) 1048970)))
