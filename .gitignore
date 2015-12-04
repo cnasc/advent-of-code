@@ -4,3 +4,5 @@
 *.rkt#1#
 
 *.rkt#2#
+
+*.profile
