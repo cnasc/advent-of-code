@@ -25,7 +25,7 @@ Your puzzle input is yzbqklnj.
 
 ; Returns true if hash starts with five zeroes
 (define (answer? hash)
-  (define first5 (substring hash 0 4))
+  (define first5 (substring hash 0 5))
   (string=? first5 "00000"))
 
 ;;;;;;;;;;
