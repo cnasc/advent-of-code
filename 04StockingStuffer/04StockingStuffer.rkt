@@ -9,3 +9,9 @@ puzzle input, given below) followed by a number in decimal. To mine
 AdventCoins, you must find Santa the lowest positive number
 (no leading zeroes: 1, 2, 3, ...) that produces such a hash.
 |#
+
+;;;;;;;;;;
+;; MAIN ;;
+;;;;;;;;;;
+(define (start key)
+  (get-hash key 1))
