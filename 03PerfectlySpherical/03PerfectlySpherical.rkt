@@ -1,4 +1,5 @@
 #lang racket
+(require racket/performance-hint)
 ;;;;;;;;;;
 ;; DATA ;;
 ;;;;;;;;;;
@@ -41,7 +42,7 @@
 
 ; Consumes a list of positions and a direction and produces a list with the
 ; new position at the head
-(define (move lst dir)
+(define-inline (move lst dir)
   (define head (first lst))
   (define x (posn-x head))
   (define y (posn-y head))
