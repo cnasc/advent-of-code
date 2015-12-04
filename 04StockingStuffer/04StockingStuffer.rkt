@@ -1,5 +1,5 @@
 #lang racket
-(require file/md5 racket/format rackunit rackunit/text-ui profile)
+(require file/md5 racket/format rackunit rackunit/text-ui)
 #|
 Santa needs help mining some AdventCoins (very similar to bitcoins) to use
 as gifts for all the economically forward-thinking little girls and boys.
@@ -36,7 +36,7 @@ Your puzzle input is yzbqklnj.
 ;; MAIN ;;
 ;;;;;;;;;;
 ; Number of leading digits to match
-(define NUM-TO-FIND 6)
+(define NUM-TO-FIND 5)
 ; Pattern of leading digits to match
 (define MATCH (string-repeat NUM-TO-FIND "0"))
 
@@ -48,8 +48,9 @@ Your puzzle input is yzbqklnj.
 ;;;;;;;;;;;
 (define-test-suite all
   (test-case "answer?"
-             (check-true (answer? "00000"))
-             (check-false (answer? "00001")))
+             (check-true (answer? MATCH))
+             (check-false (answer? (string-append "n" MATCH))))
+  ; These tests assume that NUM-TO-FIND is set to 5
   (test-case "get-answer"
              (check-eq? (get-answer "abcdef" 609043) 609043)
              (check-eq? (get-answer "pqrstuv" 1048970) 1048970)))
