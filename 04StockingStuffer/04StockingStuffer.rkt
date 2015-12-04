@@ -18,7 +18,7 @@ Your puzzle input is yzbqklnj.
 ;;;;;;;;;;;;;;;
 ; Consumes the key and current number to try and produces the answer
 (define (get-answer key num)
-  (define hash (get-hash (string-append key (number->string num))))
+  (define hash (md5 (string-append key (number->string num))))
   (if (answer? hash)
       num
       (get-answer key (add1 num))))
