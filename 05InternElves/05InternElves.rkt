@@ -14,6 +14,7 @@ A nice string is one with all of the following properties:
 ;;;;;;;;;;;;;;;
 ;; CONSTANTS ;;
 ;;;;;;;;;;;;;;;
+; Year 1
 (define VOWELS (pregexp "[aeiou]"))
 (define DOUBLE-LETTERS (pregexp "([a-z])\\1"))
 (define AUTO-NAUGHTY (pregexp "ab|cd|pq|xy"))
