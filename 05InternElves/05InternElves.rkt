@@ -21,10 +21,22 @@ A nice string is one with all of the following properties:
 ;;;;;;;;;;;;;;;
 ;; FUNCTIONS ;;
 ;;;;;;;;;;;;;;;
+; Consumes an input list and accumulator, produces number of nice strings
 (define (number-of-nice-strings input acc)
   (cond [(empty? input) acc]
         [(nice? (car input)) (number-of-nice-strings (cdr input) (add1 acc))]
         [else (number-of-nice-strings (cdr input) acc)]))
+
+; Returns true if a string meets niceness requirements
+(define (nice? str)
+  (define has-3-vowels (>= (length (regexp-match* vowels str)) 3))
+  (define has-double-letter (regexp-match* double-letters str))
+  (define naughty (regexp-match auto-naughty str))
+  (if (and (not naughty)
+           has-3-vowels
+           has-double-letter)
+      #t
+      #f))
 
 ;;;;;;;;;;
 ;; MAIN ;;
