@@ -11,6 +11,14 @@ A nice string is one with all of the following properties:
      of one of the other requirements.
 |#
 
+;;;;;;;;;;;;;;;
+;; FUNCTIONS ;;
+;;;;;;;;;;;;;;;
+(define (number-of-nice-strings input acc)
+  (cond [(empty? input) acc]
+        [(nice? (car input)) (number-of-nice-strings (cdr input) (add1 acc))]
+        [else (number-of-nice-strings (cdr input) acc)]))
+
 ;;;;;;;;;;
 ;; MAIN ;;
 ;;;;;;;;;;
