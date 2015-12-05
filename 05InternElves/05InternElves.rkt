@@ -19,6 +19,10 @@ A nice string is one with all of the following properties:
 (define DOUBLE-LETTERS (pregexp "([a-z])\\1"))
 (define AUTO-NAUGHTY (pregexp "ab|cd|pq|xy"))
 
+; Year 2
+(define TWO-PAIRS (pregexp "\\w*?(\\w{2})\\w*?\\1"))
+(define SPLIT (pregexp "(\\w).\\1"))
+
 ;;;;;;;;;;;;;;;
 ;; FUNCTIONS ;;
 ;;;;;;;;;;;;;;;
