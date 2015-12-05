@@ -40,7 +40,7 @@ Now, a nice string is one with all of the following properties:
         [(nice? (car input)) (number-of-nice-strings (cdr input) (add1 acc))]
         [else (number-of-nice-strings (cdr input) acc)]))
 
-; Returns true if a string meets niceness requirements
+; Returns true if a string meets year 1 niceness requirements
 (define (nice? str)
   (define has-3-vowels (>= (length (regexp-match* VOWELS str)) 3))
   (define has-double-letter (regexp-match DOUBLE-LETTERS str))
@@ -50,6 +50,8 @@ Now, a nice string is one with all of the following properties:
            has-double-letter)
       #t
       #f))
+
+; Returns true if a string meets year 2 niceness requirements
 
 ;;;;;;;;;;
 ;; MAIN ;;
