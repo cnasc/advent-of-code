@@ -10,3 +10,10 @@ A nice string is one with all of the following properties:
     -It does not contain the strings ab, cd, pq, or xy, even if they are part
      of one of the other requirements.
 |#
+
+;;;;;;;;;;
+;; MAIN ;;
+;;;;;;;;;;
+(define (start file-name)
+  (define input (file->lines file-name))
+  (number-of-nice-strings input 0))
