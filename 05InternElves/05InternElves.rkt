@@ -14,9 +14,9 @@ A nice string is one with all of the following properties:
 ;;;;;;;;;;;;;;;
 ;; CONSTANTS ;;
 ;;;;;;;;;;;;;;;
-(define vowels (pregexp "[aeiou]"))
-(define double-letters (pregexp "([a-z])\\1"))
-(define auto-naughty (pregexp "ab|cd|pq|xy"))
+(define VOWELS (pregexp "[aeiou]"))
+(define DOUBLE-LETTERS (pregexp "([a-z])\\1"))
+(define AUTO-NAUGHTY (pregexp "ab|cd|pq|xy"))
 
 ;;;;;;;;;;;;;;;
 ;; FUNCTIONS ;;
@@ -29,9 +29,9 @@ A nice string is one with all of the following properties:
 
 ; Returns true if a string meets niceness requirements
 (define (nice? str)
-  (define has-3-vowels (>= (length (regexp-match* vowels str)) 3))
-  (define has-double-letter (regexp-match* double-letters str))
-  (define naughty (regexp-match auto-naughty str))
+  (define has-3-vowels (>= (length (regexp-match* VOWELS str)) 3))
+  (define has-double-letter (regexp-match DOUBLE-LETTERS str))
+  (define naughty (regexp-match AUTO-NAUGHTY str))
   (if (and (not naughty)
            has-3-vowels
            has-double-letter)
