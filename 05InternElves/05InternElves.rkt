@@ -12,6 +12,13 @@ A nice string is one with all of the following properties:
 |#
 
 ;;;;;;;;;;;;;;;
+;; CONSTANTS ;;
+;;;;;;;;;;;;;;;
+(define vowels (pregexp "[aeiou]"))
+(define double-letters (pregexp "([a-z])\\1"))
+(define auto-naughty (pregexp "ab|cd|pq|xy"))
+
+;;;;;;;;;;;;;;;
 ;; FUNCTIONS ;;
 ;;;;;;;;;;;;;;;
 (define (number-of-nice-strings input acc)
