@@ -52,6 +52,10 @@ Now, a nice string is one with all of the following properties:
       #f))
 
 ; Returns true if a string meets year 2 niceness requirements
+(define (nice2? str)
+  (define has-pairs (regexp-match TWO-PAIRS str))
+  (define has-split (regexp-match SPLIT str))
+  (and has-pairs has-split))
 
 ;;;;;;;;;;
 ;; MAIN ;;
