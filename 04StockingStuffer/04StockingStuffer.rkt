@@ -28,7 +28,7 @@ Your puzzle input is yzbqklnj.
   (define first-group (substring hash 0 NUM-TO-FIND))
   (string=? first-group MATCH))
 
-; Repeats a string a number of time
+; Repeats a string a number of times
 (define (string-repeat n str)
   (string-append* (make-list n str)))
 
