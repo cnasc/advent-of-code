@@ -9,6 +9,14 @@ A nice string is one with all of the following properties:
      abcdde (dd), or aabbccdd (aa, bb, cc, or dd).
     -It does not contain the strings ab, cd, pq, or xy, even if they are part
      of one of the other requirements.
+
+Year 2:
+Now, a nice string is one with all of the following properties:
+    -It contains a pair of any two letters that appears at least twice in the
+     string without overlapping, like xyxy (xy) or aabcdefgaa (aa), but not
+     like aaa (aa, but it overlaps).
+    -It contains at least one letter which repeats with exactly one letter
+     between them, like xyx, abcdefeghi (efe), or even aaa.
 |#
 
 ;;;;;;;;;;;;;;;
