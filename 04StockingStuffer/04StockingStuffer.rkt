@@ -1,5 +1,5 @@
 #lang racket
-(require file/md5 racket/format rackunit rackunit/text-ui)
+(require openssl/md5 rackunit rackunit/text-ui)
 #|
 Santa needs help mining some AdventCoins (very similar to bitcoins) to use
 as gifts for all the economically forward-thinking little girls and boys.
@@ -18,7 +18,8 @@ Your puzzle input is yzbqklnj.
 ;;;;;;;;;;;;;;;
 ; Consumes the key and current number to try and produces the answer
 (define (get-answer key num)
-  (define hash (~a (md5 (string-append key (number->string num)))))
+  (define to-hash (open-input-string (string-append key (number->string num))))
+  (define hash (md5 to-hash))
   (if (answer? hash)
       num
       (get-answer key (add1 num))))
@@ -42,6 +43,7 @@ Your puzzle input is yzbqklnj.
 
 (define (start key)
   (get-answer key 1))
+
 
 ;;;;;;;;;;;
 ;; TESTS ;;
